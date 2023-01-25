@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 
@@ -216,7 +217,7 @@
 
   <hr size="35" color="yellow">
 
-  <form class="" action="mailto:theexportingcompany@gmail.com" method="post" enctype="text/plain">
+  <form id="playground-form" action="mailto:theexportingcompany@gmail.com" method="post" enctype="text/plain">
     <p><label for="user-name">Your Name: </label>
       <input type="text" id="user-name" name="Name">
     </p>
@@ -232,14 +233,14 @@
 
     <p>
       <input type="date" name="user_date" id="user_date_id" style="margin-right: 4em">
-      <input type="datetime" name="user_datetime" id="user_datetime_id" style="margin-right: 4em">
       <input type="datetime-local" name="user_datetime_local" id="user_datetime_local_id" style="margin-right: 4em">
     </p>
 
     <p>
-      <input type="file" id="user_file_id" accept="audio/*">
-      <!-- <button id="upload-button" onclick="document.getElementById('user_file_id').click()">Upload</button> -->
+      <input type="file" id="user_file_id" accept="audio/mp3" style="margin-top: 2em;"><br>
+      <progress id="upload-progress" value="0" max="100" style="margin-top: 1em;"></progress>
       <audio id="audio-control" controls></audio>
+
     </p>
 
     <p>
@@ -279,8 +280,6 @@
     // Change the backfground color from user selection
     const colorPicker = document.getElementById('color-picker')
     const textArea = document.getElementById('user-message')
-
-    
     //to do it by calling changeBackgroundColor if it doesn't have any paramenter
     // colorPicker.addEventListener("input", changeBackgroundColor);
 
@@ -368,14 +367,94 @@
 
     // Play the uploaded music file
 
+    //Code to upload mp3 to a server like node js and then play it. NOT TESTED
+
+    // const form = document.getElementById('playground-form');
+    // const fileInput = document.getElementById('user_file_id');
+    // const progressBar = document.getElementById('upload-progress');
+
+    // form.addEventListener('submit', async (event) => {
+    //   event.preventDefault();
+
+    //   const file = fileInput.files[0];
+    //   const formData = new FormData();
+    //   formData.append('mp3', file);
+
+    //   try {
+    //     progressBar.style.display = 'block';
+    //     const response = await fetch('/upload', {
+    //       method: 'POST',
+    //       body: formData,
+    //       onUploadProgress: (event) => {
+    //         progressBar.value = (event.loaded / event.total) * 100;
+    //       },
+    //     });
+
+    //     const data = await response.json();
+
+    //     if (data.success) {
+    //       const audio = new Audio();
+    //       audio.src = data.url;
+    //       audio.play();
+    //     } else {
+    //       alert('Upload failed, please try again.');
+    //     }
+    //   } catch (error) {
+    //     console.error(error);
+    //     alert('Upload failed, please try again.');
+    //   } finally {
+    //     progressBar.style.display = 'none';
+    //   }
+    // });
+
+
     const input = document.getElementById("user_file_id");
     const player = document.getElementById("audio-control");
+    const progressBar = document.getElementById("upload-progress");
 
-    input.addEventListener("change", function () {
+    // to play the mp3 without progressbar
+    // input.addEventListener("change", function () {
+    //   const file = input.files[0];
+    //   player.src = URL.createObjectURL(file);
+    //   player.play();
+    // });
+
+    input.addEventListener('change', (event) => {
+      progressBar.style.display = 'block';
       const file = input.files[0];
-      player.src = URL.createObjectURL(file);
-      player.play();
+      textArea.value += `contentType is ${file.contentType} and type is ${file.type}`
+      const fileReader = new FileReader();
+
+      fileReader.addEventListener("load", () => {
+        // convert image file to base64 string
+        player.src = fileReader.result;
+        player.play();
+      }, false);
+
+      fileReader.onprogress
+
+      fileReader.onprogress = (event) => {
+        if (event.lengthComputable) {
+          progressBar.max = event.total;
+          progressBar.value = event.loaded;
+        }
+      };
+
+      if (file) {
+        fileReader.readAsDataURL(file);
+      }
     });
+
+    function dataUrlToBlob(dataUrl, contentType) {
+      const parts = dataUrl.split(',');
+      // const contentType = parts[0].split(':')[1].split(';')[0];
+      const data = parts[1];
+      const byteArray = new Uint8Array(data.length);
+      for (let i = 0; i < byteArray.length; i++) {
+        byteArray[i] = data.charCodeAt(i);
+      }
+      return new Blob([byteArray], { type: contentType });
+    }
 
   </script>
 </body>
