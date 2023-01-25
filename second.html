@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+</head>
+
+<body bgcolor="white">
+    <img src="https://www.planetware.com/wpimages/2020/02/france-in-pictures-beautiful-places-to-photograph-eiffel-tower.jpg"
+        alt="eiffel tower" />
+
+    <img src="images/eiffel1.jpg" alt="eiffel tower" />
+    <ul>
+        <li><a href="index.html">First Page</a></li>
+        <li>Second PageSecond</li>
+        <li><a href="third.html">Third Page</a></li>
+    </ul>
+    <ul>
+        <li>List item 555</li>
+        <li>List item 2</li>
+        <li>List item 3</li>
+    </ul>
+
+    <ul class="SpaceCounters">
+        <li style="color: red; font-size: 20px;">List item 555</li>
+        <li>List item 2</li>
+        <li>List item 3</li>
+    </ul>
+    <div id="output"></div>
+    <script>
+        const outputElement = document.getElementById("output");
+        // window.onload = function () {
+
+        outputElement.addEventListener('click', setRandomBorder);
+        outputElement.innerHTML = `Click me`;
+
+
+        function random(min, max) {
+            const num = Math.floor(Math.random() * (max - min)) + min;
+            return num;
+        }
+
+        function randomColor() {
+            return `rgb(${random(0, 255)}, ${random(0, 255)}, ${random(0, 255)})`;
+        }
+
+        function randomColorHex() {
+            const rgb = `${random(0, 255)}, ${random(0, 255)}, ${random(0, 255)}`.split(",").map(val =>
+                // console.log(`parsing ${val}`)
+                parseInt(val)
+            );
+            return rgbToHex(rgb[0], rgb[1], rgb[2]);
+        }
+
+        function rgbToHex(r, g, b) {
+            return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+        }
+
+        function setRandomBorder() {
+            const newBorder = `${random(1, 50)}px solid ${randomColor()}`;
+            outputElement.innerText = `${newBorder}`
+            outputElement.style.color = randomColorHex();
+            document.body.style.backgroundColor = randomColorHex();
+
+            const listItems = document.querySelectorAll("li");
+            const emojis = [
+                "💡", "🔥", "🎉", "🌟", "⭐", "🌀", "🌈", "🌊", "🌋", "🌌",
+                "🌏", "🌑", "🌔", "🌕", "🌙", "🌛", "🌟", "🌠", "🌰", "🌱",
+                "🌴", "🌵", "🌷", "🌸", "🌹", "🌺", "🌻", "🌼", "🌽", "🌾",
+                "🌿", "🍀", "🍁", "🍂", "🍃", "🍄", "🍅", "🍆", "🍇", "🍈",
+                "🍉", "🍊", "🍋", "🍌", "🍍", "🍎", "🍏", "🍐", "🍑", "🍒",
+                "🍓", "🥝", "🍅", "🥑", "🍆", "🥔", "🥕", "🌽", "🌶", "🥒",
+                "🥬", "🥦", "🧄", "🧅", "🍄", "🥜", "🌰", "🍞", "🥐", "🥖",
+                "🥨", "🥯", "🥞", "🧇", "🧀", "🍖", "🍗", "🥩", "🥓", "🍔",
+                "🍟", "🍕", "🌭", "🌮", "🌯", "🥙", "🥚", "🍳", "🥘", "🍲"];
+
+            listItems.forEach(item => {
+                item.style.listStyle = "none";
+                item.style.display = "flex";
+                item.style.alignItems = "center";
+                item.style.color = randomColorHex();
+                item.style.fontSize = "20px";
+                item.innerHTML = `${item.innerHTML}`.replace(emojis, '');
+
+                emojis.forEach((emoji) => {
+                    item.innerHTML = `${item.innerHTML}`.replace(emoji, '');
+                });
+
+                const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
+                item.innerHTML = `${randomEmoji}   ${item.innerHTML}`;
+            });
+        }
+    </script>
+</body>
+
+</html>

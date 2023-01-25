@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style>
+    li::before {
+      font-size: 1.5em;
+      margin-right: 10px;
+    }
+
+    thead,
+    tfoot {
+      background-color: #3f87a6;
+      color: #fff;
+    }
+
+    tbody {
+      background-color: #e4f0f5;
+    }
+
+    caption {
+      padding: 10px;
+      caption-side: bottom;
+    }
+
+    table {
+      border-collapse: collapse;
+      border: 2px solid rgb(200, 200, 200);
+      letter-spacing: 1px;
+      font-family: sans-serif;
+      font-size: 0.8rem;
+    }
+
+    td,
+    th {
+      border: 1px solid rgb(190, 190, 190);
+      padding: 5px 10px;
+    }
+
+    td {
+      text-align: center;
+    }
+
+    .br {
+      display: block;
+      margin-bottom: 0em;
+    }
+
+    .brmedium {
+      display: block;
+      margin-bottom: 1em;
+    }
+
+    .brlarge {
+      display: block;
+      margin-bottom: 2em;
+    }
+
+    .brtop3 {
+      display: block;
+      margin-top: 3em;
+    }
+  </style>
+</head>
+
+<body>
+  <ul>
+    <li><a href="index.html">First Page</a></li>
+    <li><a href="second.html">Second Page</a></li>
+    <li>Third Page</li>
+  </ul>
+  <ul>
+    <li>List item 1</li>
+    <li>List item 2</li>
+    <li>List item 3</li>
+  </ul>
+
+  <hr size="5" color="yellow">
+  <!--We necessarily don't have to add this 'th' inside the thead and it will still work. But 
+      we add it here for ease of getting hold of each section. Similarly for tbody and tfooter -->
+
+  <table>
+    <caption>Table 1</caption>
+    <thead>
+      <tr>
+        <th scope="col">First Column</th>
+        <th scope="col">Second Column</th>
+        <th scope="col">Third Column</th>
+      </tr>
+    </thead>
+    <tr>
+      <th scope="row">Title for row 1</th>
+      <td>First column in Row 1</td>
+      <td>Some long content on the right column of row 1</td>
+    </tr>
+    <tr>
+      <th scope="row"> Title for row 2</th>
+      <td>2</td>
+      <td>Some long content on the right column of row 2</td>
+    </tr>
+
+    <tr>
+      <th scope="row">Title for row 3</th>
+      <td>that</td>
+      <td>this</td>
+    </tr>
+
+    <tfoot>
+      <tr>
+        <td>333</td>
+        <td>444</td>
+
+      </tr>
+    </tfoot>
+  </table>
+
+  <hr size="10" color="blue">
+
+  <table>
+    <caption>Table 2</caption>
+    <thead>
+      <tr>
+        <th>Items</th>
+        <th scope="col">Expenditure</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">Donuts</th>
+        <td>3,000</td>
+      </tr>
+      <tr>
+        <th scope="row">Stationery</th>
+        <td>18,000</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th scope="row">Totals</th>
+        <td>21,000</td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <hr size="15" color="red">
+
+  <table>
+    <caption>table 3 - side by side</caption>
+    <tr>
+      <td><img src="images/eiffel1.jpg" alt="eiffel tower"></td>
+      <td><i>
+          <dl>
+            <dt> Android Lead at <a href="http://www.cs.cornell.edu"><b>Floward</b></a>
+            <dt> Post Graduate in Computer Science &AMP; Engineering
+            <dt> Spcl. in Computer &amp; Information Science
+          </dl>
+        </i></td>
+    </tr>
+  </table>
+
+  <hr size="20" color="green">
+
+  <table>
+    <caption>table 4 - nested table</caption>
+    <tr>
+      <th scope="rowgroup">Skill 1</th>
+      <td>⭐️⭐️⭐️⭐️</td>
+      <th scope="rowgroup">Skill 2</th>
+      <td>⭐️⭐️⭐️⭐️</td>
+    </tr>
+
+    <tr>
+      <th scope="rowgroup">Skill 3</th>
+      <td>⭐️⭐️⭐️⭐️</td>
+      <th scope="rowgroup">Skill 4</th>
+      <td>⭐️⭐️⭐️⭐️</td>
+    </tr>
+  </table>
+
+  <hr size="25" color="violet">
+
+  <table>
+    <caption>table 5 - nested table trial</caption>
+    <tr>
+      <td>
+        <table>
+          <tr>
+            <th scope="rowgroup">Skill 1</th>
+            <td>⭐️⭐️⭐️⭐️</td>
+          </tr>
+          <tr>
+            <th scope="rowgroup">Skill 2</th>
+            <td>⭐️⭐️⭐️⭐️</td>
+          </tr>
+        </table>
+      </td>
+
+      <td>
+        <table>
+          <tr>
+            <th scope="rowgroup">Skill 3</th>
+            <td>⭐️⭐️⭐️⭐️</td>
+          </tr>
+          <tr>
+            <th scope="rowgroup">Skill 5</th>
+            <td>⭐️⭐️⭐️⭐️</td>
+          </tr>
+        </table>
+      </td>
+
+    </tr>
+
+
+
+  </table>
+
+  <hr size="35" color="yellow">
+
+  <form class="" action="mailto:theexportingcompany@gmail.com" method="post" enctype="text/plain">
+    <p><label for="user-name">Your Name: </label>
+      <input type="text" id="user-name" name="Name">
+    </p>
+
+    <p><label for="user_email">Email: </label>
+      <input type="email" name="user_email" id="fdddf">
+    </p>
+
+    <p class="brtop3">
+      <label for="user_agreement_id"> Do you want to sign up to the email list?</label>
+      <input type="checkbox" name="user_agreement" id="user_agreement_id">
+    </p>
+
+    <p>
+      <input type="date" name="user_date" id="user_date_id" style="margin-right: 4em">
+      <input type="datetime" name="user_datetime" id="user_datetime_id" style="margin-right: 4em">
+      <input type="datetime-local" name="user_datetime_local" id="user_datetime_local_id" style="margin-right: 4em">
+    </p>
+
+    <p>
+      <input type="file" id="user_file_id" accept="audio/*">
+      <!-- <button id="upload-button" onclick="document.getElementById('user_file_id').click()">Upload</button> -->
+      <audio id="audio-control" controls></audio>
+    </p>
+
+    <p>
+      <label for="user-message">Message</label><br>
+      <textarea id="user-message" cols="30" rows="10" style="margin-top: 1em;"></textarea>
+    </p>
+
+    <input type="color" id="color-picker" style="margin-right: 4em" value="#ffff00">
+    <input type="submit" value="Submit">
+  </form>
+
+
+  <script>
+    // In JavaScript, let, var, and const are all used to declare variables. They differ in their scope and their behavior when 
+    // it comes to reassignment and hoisting.
+
+    // var: Variables declared with var have function scope. This means that they are only accessible within the function in which 
+    // they are declared. If a variable is declared with var outside of any function, it becomes a global variable and is accessible 
+    // from anywhere in the code. Variables declared with var are also hoisted, meaning that they are moved to the top of their scope
+    //  and initialized with a value of undefined before any code is executed.
+
+    // let: Variables declared with let have block scope. This means that they are only accessible within the block in which they 
+    // are declared. They are not hoisted and will not be initialized until the code execution reaches the line where they are declared.
+
+    // const: Variables declared with const also have block scope, like let. The main difference between let and const is that 
+    // variables declared with const cannot be reassigned. Once a variable is declared with const, it cannot be reassigned to 
+    // a new value, it's meant to be immutable.
+
+
+    // For attribute
+    // The for attribute in a label element in HTML is used to specify which form element a label is associated with. The value of 
+    // the for attribute should be the same as the id attribute of the form element it is associated with. This allows screen readers 
+    // and other assistive technologies to associate the label with the correct form element, making it easier for users with 
+    // disabilities to understand and interact with the form.
+
+
+    // Change the backfground color from user selection
+    const colorPicker = document.getElementById('color-picker')
+    const textArea = document.getElementById('user-message')
+    //to do it by calling changeBackgroundColor if it doesn't have any paramenter
+    // colorPicker.addEventListener("input", changeBackgroundColor);
+
+    //when changeBackgroundColor accepts parameters
+    colorPicker.addEventListener("change", function () {
+      changeBackgroundColor(colorPicker.value)
+    });
+
+    // Default page background after page load
+    document.addEventListener("DOMContentLoaded", function () {
+      var color = (localStorage.getItem('color_key') == null) ? '#ffff00' : localStorage.getItem('color_key')
+      colorPicker.value = color
+      changeBackgroundColor(color)
+    })
+
+    // function to convert color in string to rgb
+    function colorStringToRGB(color) {
+      let hex = color.substring(1);
+      let r = parseInt(hex.substring(0, 2), 16);
+      let g = parseInt(hex.substring(2, 4), 16);
+      let b = parseInt(hex.substring(4, 6), 16);
+      return 'rgb(' + r + ',' + g + ',' + b + ')';
+    }
+
+    // function to change the page background color and store it in the localStorage
+    function changeBackgroundColor(colorToDisplay) {
+      if (typeof (Storage) !== "undefined") {
+        localStorage.setItem("color_key", colorToDisplay);
+      }
+      document.body.style.backgroundColor = colorPicker.value;
+      // alert(`color is ${colorToDisplay} and RGB is ${colorStringToRGB(colorToDisplay)}`)
+      var text = `color is ${colorToDisplay} and RGB is ${colorStringToRGB(colorToDisplay)}`
+      textArea.value = `color is ${colorToDisplay} and RGB is ${colorStringToRGB(colorToDisplay)}`
+
+      // OR
+      // textArea.innerHTML = text
+
+
+      // OR
+      // textArea.innerText = text
+
+      // OR
+      // textArea.textContent = text
+
+      // all does the same thing. It's worth noting that innerText and textContent are similar but have some 
+      // differences in how they handle white space and CSS styling.
+
+
+      // OR WITH jQuery
+      // $("#user-message").val(text);
+
+      // OR
+      // var textareaId = "user-message";
+
+      // $("#" + textareaId).val(text);
+
+      // OR
+      // $("#" + textareaId).html(text);
+
+      // OR
+      // $("#" + textareaId).text(text);
+
+      // OR
+      // $("#" + textareaId).textContent = text;
+
+      // OR
+      // $("#" + textareaId).innerText = text;
+
+      // all does the same as well
+
+    }
+
+    // Code to randomly add an emoji to a list item
+    const listItems = document.querySelectorAll("li");
+    const emojis = ["💡", "🔥", "🎉", "🌟", "⭐"];
+
+    listItems.forEach(item => {
+      item.style.listStyle = "none";
+      item.style.display = "flex";
+      item.style.alignItems = "center";
+
+      const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
+      item.innerHTML = `<span style="content: '${randomEmoji}';">${randomEmoji}</span>${item.innerHTML}`;
+    });
+
+    // Play the uploaded music file
+
+    const input = document.getElementById("user_file_id");
+    const player = document.getElementById("audio-control");
+
+    input.addEventListener("change", function () {
+      const file = input.files[0];
+      player.src = URL.createObjectURL(file);
+      player.play();
+    });
+
+  </script>
+</body>
+
+</html>

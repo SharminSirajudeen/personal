@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Sharmin Sirajudeen</title>
+
+    <style>
+        li::before {
+            font-size: 1.5em;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body bgcolor=white text=black link=blue vlink=blue alink=yellow>
+    <h1>Sharmin Sirajudeen</h1>
+    <i>
+        <dl>
+            <dt> Android Lead at <a href="http://www.cs.cornell.edu"><b>Floward</b></a>
+            <dt> Post Graduate in Computer Science &AMP; Engineering
+            <dt> Spcl. in Computer &amp; Information Science
+        </dl>
+    </i>
+    <hr>
+
+    <ul>
+        <li>First Page</li>
+        <li><a href="second.html">Second Page</a></li>
+        <li><a href="third.html">Third Page</a></li>
+    </ul>
+
+    <ol type="i">
+        <li>11</li>
+        <li>22</li>
+        <li>33</li>
+        <li>44</li>
+        <li>55</li>
+    </ol>
+
+    <script>
+        const listItems = document.querySelectorAll("li");
+        const emojis = ["💡", "🔥", "🎉", "🌟", "⭐"];
+
+        listItems.forEach(item => {
+            item.style.listStyle = "none";
+            item.style.display = "flex";
+            item.style.alignItems = "center";
+
+            const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
+            item.innerHTML = `<span style="content: '${randomEmoji}';">${randomEmoji}</span>${item.innerHTML}`;
+        });
+    </script>
+</body>
+
+</html>
